@@ -1,13 +1,16 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Flex,
   Heading,
   HStack,
-  Link,
   Box,
   VStack,
   Icon,
+  Text,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
+import CartContext from '../store/CartContext';
 
 import useSpace from '../hooks/useSpace';
 
@@ -40,7 +43,11 @@ const Hamburger = () => {
   );
 };
 
-const Header = () => {
+const Header = props => {
+  const cartCtx = useContext(CartContext);
+  const numberOfCartItems = cartCtx.items.reduce((currNumber, item) => {
+    return currNumber + item.amount;
+  }, 0);
   const { space } = useSpace();
   return (
     <Flex
@@ -55,14 +62,29 @@ const Header = () => {
       bg="#f1f2ed"
     >
       <Flex w={space} justify="space-between" align="center">
-        <Heading fontSize="20px" color="blue.500">
-          Shopping Concept
-        </Heading>
+        <Link to="/">
+          <Heading fontSize="20px" color="blue.500">
+            Shopping Concept
+          </Heading>
+        </Link>
         <HStack spacing="20px">
           {menu.map(item => (
-            <Link key={item.name}>{item.name}</Link>
+            <Link key={item.name} to="/">
+              {item.name}
+            </Link>
           ))}
-          <Icon as={FiShoppingCart} />
+          <Link to="/cart">
+            <HStack
+              // onClick={props.onShowCart}
+              // onHover={props.onShowCart}
+              w="50px"
+              _hover={{ color: 'gold' }}
+              cursor="pointer"
+            >
+              <Icon as={FiShoppingCart} />
+              <Text>{numberOfCartItems}</Text>
+            </HStack>
+          </Link>
         </HStack>
         <Hamburger />
       </Flex>

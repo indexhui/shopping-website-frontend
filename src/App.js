@@ -4,14 +4,22 @@ import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
 
 import React, { useState, useEffect } from 'react';
-import { ChakraProvider, Text } from '@chakra-ui/react';
+import { Routes, Route, Link } from 'react-router-dom';
 
+import { ChakraProvider, Text } from '@chakra-ui/react';
+import CartProvider from './store/CartProvider';
 import theme from './theme/theme.js';
 import Header from './sections/Header';
+import Home from './pages/Home';
+import Cart from './pages/Cart';
+import Product from './pages/Product';
+
 import ProductList from './components/ProductList.js';
 import SpecialItem from './sections/SpecialItem';
+import CartModal from './components/Cart/CartModal';
 
 function App() {
+  const [cartIsShown, setCartIsShown] = useState(false);
   const [products, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
@@ -44,24 +52,31 @@ function App() {
       setIsLoading(false);
     };
 
-    // try {
-    //   fetchTours().catch();
-    // } catch (error) {
-    //   setIsLoading(false);
-    //   setHttpError(error.message);
-    // }
-
     fetchTours().catch(error => {
       setIsLoading(false);
       setHttpError(error.message);
     });
   }, []);
 
+  const showCartHandler = () => {
+    setCartIsShown(true);
+  };
+
+  const hideCartHandler = () => {
+    setCartIsShown(false);
+  };
+
   return (
     <ChakraProvider theme={theme}>
-      <Header />
-      <SpecialItem />
-      <ProductList products={products} />
+      <CartProvider>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+        <Header onShowCart={showCartHandler} />
+        <Routes>
+          <Route path="/" element={<Home products={products} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:productId" element={<Product />} />
+        </Routes>
+      </CartProvider>
     </ChakraProvider>
   );
 }

@@ -14,7 +14,7 @@ const CartReducer = (state, action) => {
   const existingCartItem = state.items[existingCartItemIndex];
   let updatedTotalAmount;
   let updatedItems;
-
+  console.log('state', state);
   switch (action.type) {
     case 'ADD_ITEM':
       console.log('ADD_ITEM');
@@ -84,14 +84,14 @@ const CartProvider = props => {
   const addItemToCartHandler = item => {
     dispatchCartAction({
       type: 'ADD_ITEM',
-      payload: item,
+      item: item,
     });
   };
 
   const removeItemFromCartHandler = id => {
     dispatchCartAction({
       type: 'REMOVE_ITEM',
-      payload: id,
+      id: id,
     });
   };
 
