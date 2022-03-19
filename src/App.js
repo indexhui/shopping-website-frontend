@@ -1,40 +1,67 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import '@fontsource/montserrat/300.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/700.css';
+
+import React, { useState, useEffect } from 'react';
+import { ChakraProvider, Text } from '@chakra-ui/react';
+
+import theme from './theme/theme.js';
+import Header from './sections/Header';
+import ProductList from './components/ProductList.js';
+import SpecialItem from './sections/SpecialItem';
 
 function App() {
+  const [products, setProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState(null);
+
+  useEffect(() => {
+    const fetchTours = async () => {
+      const response = await fetch(
+        'https://infinite-beach-24731.herokuapp.com/api/commodities'
+      );
+
+      if (!response.ok) {
+        throw new Error(`${response.status} ${response.statusText}`);
+      }
+      const responseData = await response.json();
+      const result = responseData.result;
+      console.log(result);
+      const loadedTours = [];
+
+      result.forEach(data =>
+        loadedTours.push({
+          id: data.id,
+          name: data.name,
+          image: data.image,
+          introduction: data.introduction,
+          price: data.price,
+        })
+      );
+
+      setProduct(loadedTours);
+      setIsLoading(false);
+    };
+
+    // try {
+    //   fetchTours().catch();
+    // } catch (error) {
+    //   setIsLoading(false);
+    //   setHttpError(error.message);
+    // }
+
+    fetchTours().catch(error => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
+  }, []);
+
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+      <Header />
+      <SpecialItem />
+      <ProductList products={products} />
     </ChakraProvider>
   );
 }
