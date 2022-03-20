@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/shopping-website-frontend/static/css/main.32172dc1.css",
+    "main.js": "/shopping-website-frontend/static/js/main.6df3b035.js",
+    "static/js/377.4e2c426e.chunk.js": "/shopping-website-frontend/static/js/377.4e2c426e.chunk.js",
+    "static/media/mo.png": "/shopping-website-frontend/static/media/mo.a50365f90c06affd44dd.png",
+    "static/media/montserrat-all-700-normal.woff": "/shopping-website-frontend/static/media/montserrat-all-700-normal.81b48f7ab9882a2f3ea9.woff",
+    "static/media/montserrat-all-500-normal.woff": "/shopping-website-frontend/static/media/montserrat-all-500-normal.598ec45d84be8894cb1a.woff",
+    "static/media/montserrat-all-400-normal.woff": "/shopping-website-frontend/static/media/montserrat-all-400-normal.aa917f2f47304e192c88.woff",
+    "static/media/montserrat-all-300-normal.woff": "/shopping-website-frontend/static/media/montserrat-all-300-normal.063b2f60c12ee6124250.woff",
+    "static/media/montserrat-latin-700-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-700-normal.6077783c63fa414406e1.woff2",
+    "static/media/montserrat-latin-500-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-500-normal.730131c0fbe55c1ba282.woff2",
+    "static/media/montserrat-latin-400-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-400-normal.5d169d5efcd03fdcc0d7.woff2",
+    "static/media/montserrat-latin-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-300-normal.a113f0d9a98e9857e436.woff2",
+    "static/media/montserrat-latin-ext-700-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-ext-700-normal.6e9703930749a253a40c.woff2",
+    "static/media/montserrat-latin-ext-500-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-ext-500-normal.8b38a822f23218473438.woff2",
+    "static/media/montserrat-latin-ext-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-ext-300-normal.37fab7a40c731f5c6e39.woff2",
+    "static/media/montserrat-latin-ext-400-normal.woff2": "/shopping-website-frontend/static/media/montserrat-latin-ext-400-normal.78f49f9fae55910fc2ae.woff2",
+    "static/media/montserrat-cyrillic-ext-700-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-ext-700-normal.1a6d53ebed645ed509ee.woff2",
+    "static/media/montserrat-cyrillic-ext-500-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-ext-500-normal.6a43f4062512758b750b.woff2",
+    "static/media/montserrat-cyrillic-ext-400-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-ext-400-normal.292f0ac24f2654f6e295.woff2",
+    "static/media/montserrat-cyrillic-ext-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-ext-300-normal.df176773d12d4c2e5f0b.woff2",
+    "static/media/montserrat-cyrillic-500-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-500-normal.aa80bfb9a225c12d2141.woff2",
+    "static/media/montserrat-cyrillic-700-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-700-normal.56a74dfbd69c9a2c5687.woff2",
+    "static/media/montserrat-cyrillic-400-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-400-normal.57021f86f3fe9d3ba3c8.woff2",
+    "static/media/montserrat-cyrillic-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-cyrillic-300-normal.3d059d3f767be22de6a9.woff2",
+    "static/media/montserrat-vietnamese-700-normal.woff2": "/shopping-website-frontend/static/media/montserrat-vietnamese-700-normal.053a2c85199f87b0b130.woff2",
+    "static/media/montserrat-vietnamese-400-normal.woff2": "/shopping-website-frontend/static/media/montserrat-vietnamese-400-normal.ba00b1a6e1e5778dbf9b.woff2",
+    "static/media/montserrat-vietnamese-500-normal.woff2": "/shopping-website-frontend/static/media/montserrat-vietnamese-500-normal.47179ae75e06be96bc1a.woff2",
+    "static/media/montserrat-vietnamese-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-vietnamese-300-normal.a6012bf6b1eccc4e1806.woff2",
+    "index.html": "/shopping-website-frontend/index.html",
+    "main.32172dc1.css.map": "/shopping-website-frontend/static/css/main.32172dc1.css.map",
+    "main.6df3b035.js.map": "/shopping-website-frontend/static/js/main.6df3b035.js.map",
+    "377.4e2c426e.chunk.js.map": "/shopping-website-frontend/static/js/377.4e2c426e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.32172dc1.css",
+    "static/js/main.6df3b035.js"
+  ]
+}
