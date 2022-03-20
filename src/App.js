@@ -13,6 +13,7 @@ import Header from './sections/Header';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Product from './pages/Product';
+import Login from './pages/Login';
 
 import ProductList from './components/ProductList.js';
 import SpecialItem from './sections/SpecialItem';
@@ -74,6 +75,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home products={products} />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Login />} />
           <Route path="/product/:productId" element={<Product />} />
         </Routes>
       </CartProvider>

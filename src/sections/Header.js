@@ -86,6 +86,11 @@ const Header = props => {
             </HStack>
           </Link>
         </HStack>
+        <Link to="/login">
+          <Flex border="1px" borderColor="blue.700">
+            登入/註冊
+          </Flex>
+        </Link>
         <Hamburger />
       </Flex>
     </Flex>

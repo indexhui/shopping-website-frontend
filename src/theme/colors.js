@@ -10,7 +10,7 @@ const colors = {
   gold: '#AF915E',
   brown: {
     500: '#D2C8C6',
-    400: '#EFEAE8',
+    400: '#EFEAE7',
   },
 };
 
