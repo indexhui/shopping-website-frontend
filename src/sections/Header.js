@@ -144,11 +144,12 @@ const Header = props => {
           </Flex>
         )}
         {!currentUserCtx.user?.id && (
-          <Link to="/login">
-            <Flex px="20px">
-              <Text>Sign In / Sign Up</Text>
-            </Flex>
-          </Link>
+          <Flex px="20px">
+            <Text>
+              <Link to="/signin">Sign In </Link> /
+              <Link to="/signup"> Sign Up</Link>
+            </Text>
+          </Flex>
         )}
 
         <Hamburger />
