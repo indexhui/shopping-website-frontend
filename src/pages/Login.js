@@ -1,7 +1,12 @@
 import { Flex } from '@chakra-ui/react';
+import LoginForm from '../components/LoginForm';
 
 const Login = () => {
-  return <Flex>登入</Flex>;
+  return (
+    <Flex justify="center" pt="50px">
+      <LoginForm />
+    </Flex>
+  );
 };
 
 export default Login;

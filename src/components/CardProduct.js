@@ -1,12 +1,24 @@
 import { useRef, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CartContext from '../store/CartContext';
-import { Flex, Box, Button, Text, Image, HStack } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Button,
+  Text,
+  Image,
+  HStack,
+  VStack,
+  useToast,
+} from '@chakra-ui/react';
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 const CardProduct = props => {
   const { product } = props;
   const navigate = useNavigate();
   const cartCtx = useContext(CartContext);
+  const toastIdRef = useRef();
+  const toast = useToast();
 
   const addItemToCartHandler = amount => {
     cartCtx.addItem({
@@ -19,9 +31,65 @@ const CardProduct = props => {
     console.log(product.name, product.id, amount, product.price);
   };
 
+  function closeToast() {
+    toast.closeAll();
+  }
+
+  function addToast() {
+    toastIdRef.current = toast({
+      title: product.name,
+      position: 'top',
+      description: 'add successfully',
+      status: 'success',
+      duration: 750,
+      isClosable: true,
+      background: 'red',
+      render: () => (
+        <Flex
+          color="white"
+          p={3}
+          bg="gold"
+          rounded="md"
+          opacity=".95"
+          align="flex-start"
+          position="relative"
+        >
+          <Flex
+            bg="white"
+            color="gold"
+            rounded="full"
+            p="4px"
+            mr="10px"
+            mt="2px"
+          >
+            <CheckIcon w="10px" h="10px" />
+          </Flex>
+          <VStack align="flex-start">
+            <Text fontWeight="900" fontSize="15px">
+              {product.name}
+            </Text>
+            <Text fontSize="12px">Added success</Text>
+          </VStack>
+          <Flex
+            p="8px"
+            cursor="pointer"
+            position="absolute"
+            rounded="full"
+            top="15px"
+            right="15px"
+            _hover={{ bg: 'rgba(0,0,0,.1)' }}
+          >
+            <CloseIcon w="10px" h="10px" onClick={closeToast} />
+          </Flex>
+        </Flex>
+      ),
+    });
+  }
+
   const onClickAddHandler = e => {
     e.stopPropagation();
     addItemToCartHandler(1);
+    addToast();
   };
 
   const onClickHandler = e => {

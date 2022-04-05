@@ -17,15 +17,7 @@ const customTheme = {
     },
   },
   colors,
-  // colors: {
-  //   ...colors,
-  //   brand: {
-  //     500: '#3DB9FF',
-  //     600: '#186DD1',
-  //     700: '#0A2C54',
-  //   },
-  //   grass: '#61CE70',
-  // },
+
   components: {
     Button,
   },

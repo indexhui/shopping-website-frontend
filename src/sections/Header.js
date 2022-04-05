@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import {
   Flex,
@@ -8,13 +9,22 @@ import {
   VStack,
   Icon,
   Text,
+  Divider,
+  Avatar,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
 import CartContext from '../store/CartContext';
+import CurrentUserContext from '../store/CurrentUserContext';
 
 import useSpace from '../hooks/useSpace';
 
+import PopoverMenu from '../components/PopoverMenu';
+
 const menu = [
+  {
+    name: 'home',
+    link: '/home',
+  },
   {
     name: 'about',
     link: '/about',
@@ -43,8 +53,46 @@ const Hamburger = () => {
   );
 };
 
+const SignOutButton = () => {
+  const navigate = useNavigate();
+  const currentUserCtx = useContext(CurrentUserContext);
+  const handleSignOut = () => {
+    navigate(`/home`, { replace: true });
+    currentUserCtx.signOut();
+  };
+  return (
+    <Flex
+      w="100%"
+      cursor="pointer"
+      onClick={handleSignOut}
+      p="10px"
+      color="blue.700"
+      _hover={{ bg: 'gray.100' }}
+    >
+      Sign Out
+    </Flex>
+  );
+};
+
+const UserOption = () => {
+  return (
+    <VStack width="100%" align="stretch">
+      <Link to="/home">
+        <Text textAlign="left" _hover={{ bg: 'gray.100' }} w="100%" p="10px">
+          Profile
+        </Text>
+      </Link>
+      <Flex justify="center">
+        <Divider w="90%" />
+      </Flex>
+      <SignOutButton />
+    </VStack>
+  );
+};
+
 const Header = props => {
   const cartCtx = useContext(CartContext);
+  const currentUserCtx = useContext(CurrentUserContext);
   const numberOfCartItems = cartCtx.items.reduce((currNumber, item) => {
     return currNumber + item.amount;
   }, 0);
@@ -62,14 +110,14 @@ const Header = props => {
       bg="#f1f2ed"
     >
       <Flex w={space} justify="space-between" align="center">
-        <Link to="/">
+        <Link to="/home">
           <Heading fontSize="20px" color="blue.500">
             Shopping Concept
           </Heading>
         </Link>
         <HStack spacing="20px">
           {menu.map(item => (
-            <Link key={item.name} to="/">
+            <Link key={item.name} to={item.link}>
               {item.name}
             </Link>
           ))}
@@ -86,11 +134,23 @@ const Header = props => {
             </HStack>
           </Link>
         </HStack>
-        <Link to="/login">
-          <Flex border="1px" borderColor="blue.700">
-            登入/註冊
+        {currentUserCtx.user?.name && (
+          <Flex>
+            {/* {currentUserCtx.user?.name}
+            <Avatar src={currentUserCtx.user?.image} /> */}
+            <PopoverMenu option={<UserOption />}>
+              <Avatar cursor="pointer" src={currentUserCtx.user?.image} />
+            </PopoverMenu>
           </Flex>
-        </Link>
+        )}
+        {!currentUserCtx.user?.id && (
+          <Link to="/login">
+            <Flex px="20px">
+              <Text>Sign In / Sign Up</Text>
+            </Flex>
+          </Link>
+        )}
+
         <Hamburger />
       </Flex>
     </Flex>

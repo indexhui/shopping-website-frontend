@@ -1,16 +1,28 @@
+import '@fontsource/montserrat/300.css';
+import '@fontsource/montserrat/400.css';
+import '@fontsource/montserrat/500.css';
+import '@fontsource/montserrat/700.css';
+
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
-import { HashRouter } from 'react-router-dom';
+import CartProvider from './store/CartProvider';
+import CurrentUserProvider from './store/CurrentUserProvider';
 
 ReactDOM.render(
   <StrictMode>
     <HashRouter>
       <ColorModeScript />
-      <App />
+      <CurrentUserProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </CurrentUserProvider>
     </HashRouter>
   </StrictMode>,
   document.getElementById('root')

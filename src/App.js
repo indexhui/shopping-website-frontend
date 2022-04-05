@@ -4,16 +4,18 @@ import '@fontsource/montserrat/500.css';
 import '@fontsource/montserrat/700.css';
 
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 import { ChakraProvider, Text } from '@chakra-ui/react';
 import CartProvider from './store/CartProvider';
+import CurrentUserProvider from './store/CurrentUserProvider';
 import theme from './theme/theme.js';
 import Header from './sections/Header';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Product from './pages/Product';
 import Login from './pages/Login';
+import Dashboard from './pages/admin/Dashboard';
 
 import ProductList from './components/ProductList.js';
 import SpecialItem from './sections/SpecialItem';
@@ -24,6 +26,7 @@ function App() {
   const [products, setProduct] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState(null);
+  const [token, setToken] = useState();
 
   useEffect(() => {
     const fetchTours = async () => {
@@ -73,11 +76,15 @@ function App() {
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler} />
         <Routes>
-          <Route path="/" element={<Home products={products} />} />
+          {/* <Route path="/" exact element={<Home products={products} />} /> */}
+          <Route path="/" exact element={<Home products={products} />} />
+          <Route path="/home" exact element={<Home products={products} />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/cart" element={<Login />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/product/:productId" element={<Product />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Routes>
+        {/* <Outlet /> */}
       </CartProvider>
     </ChakraProvider>
   );

@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/react';
 import ProductList from '../components/ProductList.js';
 import SpecialItem from '../sections/SpecialItem';
 
-const Cart = props => {
+const Home = props => {
   return (
     <Flex direction="column">
       <SpecialItem />
@@ -11,4 +11,4 @@ const Cart = props => {
   );
 };
 
-export default Cart;
+export default Home;
