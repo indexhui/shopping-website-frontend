@@ -13,6 +13,7 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import CartProvider from './store/CartProvider';
 import CurrentUserProvider from './store/CurrentUserProvider';
+import ModalProvider from './store/ModalProvider';
 
 ReactDOM.render(
   <StrictMode>
@@ -20,7 +21,9 @@ ReactDOM.render(
       <ColorModeScript />
       <CurrentUserProvider>
         <CartProvider>
-          <App />
+          <ModalProvider>
+            <App />
+          </ModalProvider>
         </CartProvider>
       </CurrentUserProvider>
     </HashRouter>

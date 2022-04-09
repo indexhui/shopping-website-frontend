@@ -47,6 +47,17 @@ const menu = [
   },
 ];
 
+const adminMenu = [
+  {
+    name: 'dashboard',
+    link: '/admin/dashboard',
+  },
+  {
+    name: 'users list',
+    link: '/admin/users',
+  },
+];
+
 const Hamburger = () => {
   return (
     <VStack spacing="7px">
@@ -140,25 +151,38 @@ const Header = props => {
             Shopping Concept
           </Heading>
         </Link>
-        <HStack spacing="20px">
-          {menu.map(item => (
-            <Link key={item.name} to={item.link}>
-              {item.name}
+        {!currentUserCtx.user.isAdmin && (
+          <HStack spacing="20px">
+            {menu.map(item => (
+              <Link key={item.name} to={item.link}>
+                {item.name}
+              </Link>
+            ))}
+            <Link to="/cart">
+              <HStack
+                // onClick={props.onShowCart}
+                // onHover={props.onShowCart}
+                w="50px"
+                _hover={{ color: 'gold' }}
+                cursor="pointer"
+              >
+                <Icon as={FiShoppingCart} />
+                <Text>{numberOfCartItems}</Text>
+              </HStack>
             </Link>
-          ))}
-          <Link to="/cart">
-            <HStack
-              // onClick={props.onShowCart}
-              // onHover={props.onShowCart}
-              w="50px"
-              _hover={{ color: 'gold' }}
-              cursor="pointer"
-            >
-              <Icon as={FiShoppingCart} />
-              <Text>{numberOfCartItems}</Text>
-            </HStack>
-          </Link>
-        </HStack>
+          </HStack>
+        )}
+
+        {currentUserCtx.user.isAdmin && (
+          <HStack spacing="20px">
+            {adminMenu.map(item => (
+              <Link key={item.name} to={item.link}>
+                {item.name}
+              </Link>
+            ))}
+          </HStack>
+        )}
+
         {currentUserCtx.user?.name && (
           <Flex>
             {/* {currentUserCtx.user?.name}

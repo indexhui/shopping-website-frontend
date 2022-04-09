@@ -222,6 +222,7 @@ const SignForm = props => {
         console.log('成功拉~~~~~');
         CurrentUserCtx.login(loginResult.result);
         if (loginResult.result.user.isAdmin) {
+          handleSignModalClose();
           setTimeout(() => {
             navigate(`/admin/dashboard`, { replace: true });
           }, 500);
