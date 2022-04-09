@@ -7,8 +7,11 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 import { ChakraProvider, Text } from '@chakra-ui/react';
+
+import ModalProvider from './store/ModalProvider';
 import CartProvider from './store/CartProvider';
 import CurrentUserProvider from './store/CurrentUserProvider';
+
 import theme from './theme/theme.js';
 import Header from './sections/Header';
 import Home from './pages/Home';
@@ -16,6 +19,8 @@ import Cart from './pages/Cart';
 import Product from './pages/Product';
 import Login from './pages/Login';
 import Dashboard from './pages/admin/Dashboard';
+
+import SignEventModal from './components/SignEventModal';
 
 import ProductList from './components/ProductList.js';
 import SpecialItem from './sections/SpecialItem';
@@ -70,23 +75,29 @@ function App() {
     setCartIsShown(false);
   };
 
+  // import SignUpDoneModal from '../components/SignUpDoneModal';
+
   return (
     <ChakraProvider theme={theme}>
-      <CartProvider>
-        {cartIsShown && <Cart onClose={hideCartHandler} />}
-        <Header onShowCart={showCartHandler} />
-        <Routes>
-          {/* <Route path="/" exact element={<Home products={products} />} /> */}
-          <Route path="/" exact element={<Home products={products} />} />
-          <Route path="/home" exact element={<Home products={products} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/signin" element={<Login sign="in" />} />
-          <Route path="/signup" element={<Login sign="up" />} />
-          <Route path="/product/:productId" element={<Product />} />
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-        </Routes>
-        {/* <Outlet /> */}
-      </CartProvider>
+      <ModalProvider>
+        <SignEventModal />
+        <CartProvider>
+          {cartIsShown && <Cart onClose={hideCartHandler} />}
+          <Header onShowCart={showCartHandler} />
+          {/* <SignUpDoneModal /> */}
+          <Routes>
+            {/* <Route path="/" exact element={<Home products={products} />} /> */}
+            <Route path="/" exact element={<Home products={products} />} />
+            <Route path="/home" exact element={<Home products={products} />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/signin" element={<Login sign="in" />} />
+            <Route path="/signup" element={<Login sign="up" />} />
+            <Route path="/product/:productId" element={<Product />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+          </Routes>
+          {/* <Outlet /> */}
+        </CartProvider>
+      </ModalProvider>
     </ChakraProvider>
   );
 }

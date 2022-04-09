@@ -13,12 +13,16 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 import { FiShoppingCart } from 'react-icons/fi';
+
+import ModalContext from '../store/ModalContext';
 import CartContext from '../store/CartContext';
 import CurrentUserContext from '../store/CurrentUserContext';
 
 import useSpace from '../hooks/useSpace';
 
 import PopoverMenu from '../components/PopoverMenu';
+
+import SignModal from '../components/SignModal';
 
 const menu = [
   {
@@ -93,9 +97,30 @@ const UserOption = () => {
 const Header = props => {
   const cartCtx = useContext(CartContext);
   const currentUserCtx = useContext(CurrentUserContext);
+  const modalCtx = useContext(ModalContext);
   const numberOfCartItems = cartCtx.items.reduce((currNumber, item) => {
     return currNumber + item.amount;
   }, 0);
+  const handleSignIn = () => {
+    modalCtx.onSignModalOpen(true);
+    // console.log(modalCtx.isSignIn);
+  };
+
+  const handleSignUp = () => {
+    modalCtx.onSignModalOpen(false);
+    // console.log(modalCtx.isSignIn);
+  };
+
+  // const addItemToCartHandler = amount => {
+  //   cartCtx.addItem({
+  //     id: product.id,
+  //     name: product.name,
+  //     image: product.image,
+  //     amount: +amount,
+  //     price: product?.price,
+  //   });
+  //   console.log(product.name, product.id, amount, product.price);
+  // };
   const { space } = useSpace();
   return (
     <Flex
@@ -145,10 +170,11 @@ const Header = props => {
         )}
         {!currentUserCtx.user?.id && (
           <Flex px="20px">
-            <Text>
-              <Link to="/signin">Sign In </Link> /
-              <Link to="/signup"> Sign Up</Link>
-            </Text>
+            {/* <SignModal sign="signIn" />
+            <SignModal sign="Signup" /> */}
+            <Text onClick={handleSignIn}>Sign In </Text>
+            <Text> / </Text>
+            <Text onClick={handleSignUp}> Sign Up</Text>
           </Flex>
         )}
 
