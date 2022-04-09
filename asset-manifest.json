@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/shopping-website-frontend/static/css/main.32172dc1.css",
-    "main.js": "/shopping-website-frontend/static/js/main.7891a02a.js",
+    "main.js": "/shopping-website-frontend/static/js/main.5b6d0ff3.js",
     "static/js/377.4e2c426e.chunk.js": "/shopping-website-frontend/static/js/377.4e2c426e.chunk.js",
     "static/media/mo.png": "/shopping-website-frontend/static/media/mo.a50365f90c06affd44dd.png",
     "static/media/montserrat-all-700-normal.woff": "/shopping-website-frontend/static/media/montserrat-all-700-normal.81b48f7ab9882a2f3ea9.woff",
@@ -30,11 +30,11 @@
     "static/media/montserrat-vietnamese-300-normal.woff2": "/shopping-website-frontend/static/media/montserrat-vietnamese-300-normal.a6012bf6b1eccc4e1806.woff2",
     "index.html": "/shopping-website-frontend/index.html",
     "main.32172dc1.css.map": "/shopping-website-frontend/static/css/main.32172dc1.css.map",
-    "main.7891a02a.js.map": "/shopping-website-frontend/static/js/main.7891a02a.js.map",
+    "main.5b6d0ff3.js.map": "/shopping-website-frontend/static/js/main.5b6d0ff3.js.map",
     "377.4e2c426e.chunk.js.map": "/shopping-website-frontend/static/js/377.4e2c426e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.32172dc1.css",
-    "static/js/main.7891a02a.js"
+    "static/js/main.5b6d0ff3.js"
   ]
 }
